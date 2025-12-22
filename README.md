@@ -4,11 +4,10 @@ In this assignment, you will implement part of a Transformer-based language mode
 You will then use your trained model to generate some texts, convert them into audio files, and transcribe the audio files back into text.
 
 ## Environment Setup
-
+Activate the `cs124` environment you previously created, then install packages needed for this assignment:
 ```
-conda create -n cs124 python=3.10 -y
 conda activate cs124
-pip install "torch==2.6.0" "numpy==2.1.3" "transformers==4.39.3" "datasets==2.20.0" "tiktoken-0.7.0" "wandb==0.17.6" "tqdm==4.66.4" "openai==2.6.0" "together"
+pip install "torch==2.6.0" "numpy==2.1.3" "transformers==4.39.3" "datasets==2.20.0" "tiktoken==0.7.0" "wandb==0.17.6" "tqdm==4.66.4" "openai==2.6.0" "together"
 ```
 
 ## Part 1: Implement Attention in Transformer

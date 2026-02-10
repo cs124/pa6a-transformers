@@ -1,13 +1,23 @@
-#  Programming Assignment 6 - Transformers and Speech
-  
+#  Programming Assignment 6a - Transformers
+
 In this assignment, you will implement part of a Transformer-based language model for text generation and train it on a dataset of Shakespeare corpus. 
 You will then use your trained model to generate some texts.
 
 ## Environment Setup
-Activate the `cs124` environment you previously created, then update it using `environment.yml` to make sure the required packages are installed:
+PA6a requires more packages than the `cs124` base environment you previously created. There are two ways to setup your environment:
+
+1. Activate the `cs124` environment you previously created, then install additionally required packages:
+
 ```
 conda activate cs124
-conda env update -n cs124 -f environment.yml
+pip install torch numpy transformers datasets tiktoken wandb tqdm
+```
+
+2. Create a new environment called `cs124_pa6a`:
+
+```
+conda env create -f environment_pa6a.yml
+conda activate cs124_pa6a
 ```
 
 ## Part 1: Implement Attention in Transformer
@@ -52,7 +62,7 @@ Once you feel confident about your models and sampled sentences, you should run 
 
 ## Part 4: Zip and Submit 
 
-Run `bash create_assignment_zip.sh` to zip your submission and submit the zip file to Gradescope.
+Run `bash create_assignment_zip.sh` to zip your submission. The script will create a zip file in your PA6a folder. Submit the zip file to Gradescope.
 
 To recap, the submission zip should include the following files:
 

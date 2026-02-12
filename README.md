@@ -40,12 +40,11 @@ python train.py
 ```
 
 We have already processed the Shakespeare corpus and stored the tokenized data in `data/`.
-By default, the training script uses the data that's tokenized via the GPT-2 BPE tokenizer.
-If you wish, you could also try training a character-level model by changing the `dataset` variable in `train.py` to `'shakespeare-char'`; although note that all of our benchmarking numbers are based on the BPE-tokenized data.
+The training script uses the data tokenized via the GPT-2 BPE tokenizer.
 The training script runs on CPU by default. Running the training script for 2000 iterations on my Macbook Pro with M1 chip takes around 15 minutes and gets a loss below 4.0.
 If you have extra time, you are encouraged to try out different hyperparameters and try to improve the validation loss of your model.
 
-The trained model checkpoints will be automatically saved in the `out-shakespeare/` or `out-shakespeare-char/` directories depending on whether you trained a character-level model.
+The trained model checkpoints will be automatically saved in the `out-shakespeare/` directory.
 You can then load the model checkpoint and sample from the model by running:
 
 ```
@@ -56,9 +55,13 @@ You are encouraged to tweak the sampling hyperparameters to understand the effec
 
 Use your trained model to sample 5 sentences with maximum 100 tokens each. As part of the submission, save your sampled sentences as a list of strings in a json file called `sampled_sentences.json`. We will judge the quality of your sampled sentences based on whether they are at least somewhat coherent and grammatically correct.
 
-## Part 3: Compute Perplexity on Test Sentences
+## Part 3: Implement Perplexity Calculation
 
-Once you feel confident about your models and sampled sentences, you should run the `perplexity.py` script to compute the perplexity of our test sentences with your trained models. The script will automatically save the results into a json file called `perplexity_results.json`. Do not modify the test sentences or the saving format because our grading script depends on it.
+After training your model and generating sampled sentences, you will implement code in `perplexity.py` to compute the perplexity of several test sentences using your trained model.
+
+In `perplexity.py`, fill in the section that computes perplexity for an input sentence (look for the `# TODO` comment in the `perplexity_sentence` function). Once your implementation is complete, run the script to compute and save perplexity results into a json file called `perplexity_results.json`.
+
+**Important:** Do not change the provided list of test sentences or the saving format, as our grading script depends on them.
 
 ## Part 4: Zip and Submit 
 

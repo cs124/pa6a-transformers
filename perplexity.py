@@ -2,7 +2,6 @@
 Compute perplexity of input sentences using a trained model checkpoint.
 """
 import os
-import pickle
 from contextlib import nullcontext
 import torch
 import tiktoken
@@ -47,20 +46,9 @@ def load_model_and_tokenizer(out_dir):
     model.to(device)
 
     # Tokenizer setup
-    load_meta = False
-    if init_from == 'resume' and 'config' in checkpoint and 'dataset' in checkpoint['config']:
-        meta_path = os.path.join('data', checkpoint['config']['dataset'], 'meta.pkl')
-        load_meta = os.path.exists(meta_path)
-    if load_meta:
-        with open(meta_path, 'rb') as f:
-            meta = pickle.load(f)
-        stoi, itos = meta['stoi'], meta['itos']
-        encode = lambda s: [stoi[c] for c in s]
-        decode = lambda l: ''.join([itos[i] for i in l])
-    else:
-        enc = tiktoken.get_encoding("gpt2")
-        encode = lambda s: enc.encode(s, allowed_special={"<|endoftext|>"})
-        decode = lambda l: enc.decode(l)
+    enc = tiktoken.get_encoding("gpt2")
+    encode = lambda s: enc.encode(s, allowed_special={"<|endoftext|>"})
+    decode = lambda l: enc.decode(l)
     return model, encode
 
 def perplexity_sentence(model, encode, sentence):
@@ -74,11 +62,30 @@ def perplexity_sentence(model, encode, sentence):
         with ctx:
             logits, _ = model(x, y_true)
             # logits: (1, T-1, vocab_size)
-            log_probs = torch.log_softmax(logits, dim=-1)
-            # Pick out the log probs corresponding to the true next token at each position
-            selected = log_probs[0, torch.arange(log_probs.size(1)), y_true[0]]
-            mean_nll = -selected.mean().item()
-            ppl = np.exp(mean_nll)
+            ppl = None
+            # TODO: Compute the perplexity of the input sentence given the model's outputs.
+            # What is perplexity?
+            #   - Perplexity is a measure of how well a language model predicts a sequence.
+            #   - Lower perplexity indicates the model is more confident about its predictions.
+            #   - For a sequence of tokens x1, x2, ..., xn, the per-token perplexity is:
+            #         exp(mean negative log-likelihood of the target tokens under the model)
+            #
+            # Steps:
+            # 1. Compute the log-probabilities (log softmax) of the logits along the vocabulary dimension.
+            # 2. For each position, select the log-probability of the *true* next token from the model output.
+            #    - For the t-th position, the target is y_true[0, t].
+            #    - Use torch.arange to index positions.
+            # 3. Compute the average negative log-probability (i.e., mean negative log-likelihood).
+            # 4. Take the exponential to get perplexity.
+            #
+            # Hints:
+            #   - `logits` has shape [1, T, vocab_size].
+            #   - `y_true` has shape [1, T].
+            #   - Use torch.log_softmax.
+            #   - Index with [0, torch.arange(T), y_true[0]].
+
+            # YOUR CODE HERE
+            pass  
     return ppl
 
 if __name__ == "__main__":

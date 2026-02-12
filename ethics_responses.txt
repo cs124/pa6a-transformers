@@ -1,0 +1,74 @@
+PA6a — Ethics Responses
+=======================
+
+Instructions: Write your responses directly below each question.
+There is no minimum or maximum length, but please be thoughtful and specific.
+
+
+1. Defining Human Writing
+   Perplexity measures how surprising a sequence of words is. By using this
+   as a detection metric, we are effectively defining human creativity as
+   unpredictability.
+
+   1a) Do you think unpredictability captures something that resonates with
+       your personal understanding of what makes writing human? Why or why not?
+
+   YOUR RESPONSE:
+
+
+
+   1b) Either way, who might be unfairly impacted by a tool that flags
+       predictable prose as non-human?
+
+   YOUR RESPONSE:
+
+
+
+2. The Reward for Standardization
+   Reflect on your own education.
+
+   2a) Have you ever been encouraged or rewarded for adopting a highly
+       structured, standard, or predictable writing style (e.g., for a
+       standardized test or a specific rubric)?
+
+   YOUR RESPONSE:
+
+
+
+   2b) What tensions emerge when the writing style that earns academic
+       success is also the style that AI detectors flag as suspicious?
+
+   YOUR RESPONSE:
+
+
+
+   2c) Should educators use these AI detector tools?
+
+   YOUR RESPONSE:
+
+
+
+   2d) What alternatives should educators consider if they are concerned
+       about AI writing in classes meant to teach writing skills?
+
+   YOUR RESPONSE:
+
+
+
+3. The Incentive Loop
+   As we increasingly use AI-based tools (like Grammarly or LLM editors)
+   to "polish" our work, our writing naturally becomes more predictable.
+
+   3a) What incentives does this create for different stakeholders
+       (e.g., students, educators, institutions, etc.)?
+
+   YOUR RESPONSE:
+
+
+
+   3b) If detection becomes mathematically harder, what alternative
+       frameworks might we need to think about academic integrity and the
+       role of writing in learning?
+
+   YOUR RESPONSE:
+

@@ -75,7 +75,29 @@ This will save the results into a json file called `perplexity_results.json`.
 
 **Important:** Do not change the provided list of test sentences or the saving format, as our grading script depends on them.
 
-## Part 4: Zip and Submit 
+## Part 4: Ethics
+
+In Part 3, you calculated the perplexity of your model. Many commercial AI detectors use perplexity (i.e., the predictability of a word sequence) and burstiness (i.e, the variation in sentence structure and perplexity throughout a text) to determine if a document was written by a human or an AI. Notably, the sampling methods used during LLM text generation tend to flatten probability distributions, making outputs more uniform and predictable.
+
+Read this article on [Why Perplexity and Burstiness Fail to Detect AI](https://www.pangram.com/blog/why-perplexity-and-burstiness-fail-to-detect-ai) and consider your own model's output.
+
+Open `ethics_responses.txt` and write your responses directly below each question. The questions are:
+
+1. **Defining Human Writing:** Perplexity measures how surprising a sequence of words is. By using this as a detection metric, we are effectively defining human creativity as unpredictability.
+   - a) Do you think unpredictability captures something that resonates with your personal understanding of what makes writing human? Why or why not?
+   - b) Either way, who might be unfairly impacted by a tool that flags predictable prose as non-human?
+
+2. **The Reward for Standardization:** Reflect on your own education.
+   - a) Have you ever been encouraged or rewarded for adopting a highly structured, standard, or predictable writing style (e.g., for a standardized test or a specific rubric)?
+   - b) What tensions emerge when the writing style that earns academic success is also the style that AI detectors flag as suspicious?
+   - c) Should educators use these AI detector tools?
+   - d) What alternatives should educators consider if they are concerned about AI writing in classes meant to teach writing skills?
+
+3. **The Incentive Loop:** As we increasingly use AI-based tools (like Grammarly or LLM editors) to "polish" our work, our writing naturally becomes more predictable.
+   - a) What incentives does this create for different stakeholders (e.g., students, educators, institutions, etc.)?
+   - b) If detection becomes mathematically harder, what alternative frameworks might we need to think about academic integrity and the role of writing in learning?
+
+## Part 5: Zip and Submit 
 
 Run `bash create_assignment_zip.sh` to zip your submission. The script will create a zip file in your PA6a folder. Submit the zip file to Gradescope.
 
@@ -84,3 +106,4 @@ To recap, the submission zip should include the following files:
 - `model.py`: your implementation of the Transformer model
 - `perplexity_results.json`: the perplexity results of your sampled sentences
 - `sampled_sentences.json`: your sampled sentences
+- `ethics_responses.txt`: your responses to the ethics questions

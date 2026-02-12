@@ -57,9 +57,21 @@ Use your trained model to sample 5 sentences with maximum 100 tokens each. As pa
 
 ## Part 3: Implement Perplexity Calculation
 
-After training your model and generating sampled sentences, you will implement code in `perplexity.py` to compute the perplexity of several test sentences using your trained model.
+After training your model and generating sampled sentences, you will implement the `compute_perplexity` function in `perplexity.py`. This function takes model logits and target tokens as input and returns the perplexity of the sequence. Look for the `# TODO` comment and follow the step-by-step instructions in the docstring.
 
-In `perplexity.py`, fill in the section that computes perplexity for an input sentence (look for the `# TODO` comment in the `perplexity_sentence` function). Once your implementation is complete, run the script to compute and save perplexity results into a json file called `perplexity_results.json`.
+You can verify your implementation by running the provided unit tests:
+```
+python test_perplexity.py
+```
+
+These tests use synthetic inputs (no trained model needed) to check that your math is correct. Make sure all tests pass before proceeding.
+
+Once your implementation passes the tests, run the full perplexity script to compute and save results for the test sentences:
+```
+python perplexity.py
+```
+
+This will save the results into a json file called `perplexity_results.json`.
 
 **Important:** Do not change the provided list of test sentences or the saving format, as our grading script depends on them.
 

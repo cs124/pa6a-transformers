@@ -3,6 +3,15 @@
 In this assignment, you will implement part of a Transformer-based language model for text generation and train it on a dataset of Shakespeare corpus. 
 You will then use your trained model to generate some texts.
 
+## Note on PyTorch
+In this assignment, we will use [PyTorch](https://docs.pytorch.org/docs/stable/index.html), 
+an open-source library widely used for training neural networks and large language models. 
+Like NumPy, it supports efficient matrix computations, and it also provides automatic 
+differentiation for computing gradients. If you'd like to familiarize yourself with PyTorch 
+before diving in, we recommend the CS224N PyTorch tutorial [here](https://colab.research.google.com/drive/1CAO17E5ikaAPw3O7dMKp5TkHYHJE3EJL?usp=sharing). 
+
+We have provided scaffolding and hints throughout the assignment to guide you through each step.
+
 ## Environment Setup
 PA6a requires more packages than the `cs124` base environment you previously created. There are two ways to setup your environment:
 

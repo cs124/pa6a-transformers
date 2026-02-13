@@ -48,23 +48,38 @@ class CausalSelfAttention(nn.Module):
     def forward(self, x):
         B, T, C = x.size() # batch size, sequence length, embedding dimensionality (n_embd)
 
-        # calculate query, key, values for all heads in batch and move head forward to be the batch dim
-        ## TODO: implement this
+        # Calculate query, key, values for all heads in batch and move head forward to be the batch dim
+        # - Use self.c_attn to project x into queries, keys, and values for all heads at once,
+        # - Split and reshape so that each of q, k, v has shape (B, n_head, T, head_size).
+        # Hint: self.c_attn produces an output of size 3 * n_embd, which you can split into
+        # three equal chunks along the last dimension.
+        ## TODO: implement this (~4 lines)
 
-        # Students: Implement the causal (masked) self-attention computation here.
-        # Steps required:
-        # - Compute attention scores as scaled dot products between queries and keys.
-        # - Apply the causal mask so each token can only attend to itself and earlier tokens.
-        # - Softmax the masked scores to obtain attention weights.
-        # - Apply dropout to the attention weights.
-        # - Multiply attention weights by values to construct the output, then reassemble into original shape.
-        # See the starter code and vector shapes above for reference.
-        ## TODO: implement this
+
+        # Implement causal (masked) self-attention.
+        # Attention lets each token gather information from other tokens by computing a
+        # weighted sum of value vectors. The weights come from how well a token's query
+        # matches each other token's key. "Causal" means token i can only attend to
+        # tokens 0..i — not future tokens.
+        #
+        # Steps:
+        # 1. Compute raw attention scores from q and k via a batched matrix multiply.
+        #    Scale by 1/sqrt(head_size) to keep magnitudes stable. You should end up
+        #    with dimensions (B, n_head, T, T)
+        # 2. Apply self.bias (the causal mask) to set scores for future tokens to -inf,
+        #    so they become 0 after softmax. You'll need to slice self.bias to size (T, T).
+        #    Hint: use torch.masked_fill (https://docs.pytorch.org/docs/stable/generated/torch.Tensor.masked_fill.html)
+        # 3. Normalize with F.softmax over the last dimension to get attention weights.
+        # 4. Apply self.attn_dropout to the attention weights. This randomly zeros out 
+        #    some attention weights during training to prevent the model from over-relying 
+        #    on any particular token. You should end up with dimensions (B, n_head, T, head_size)
+        # 5. Multiply attention weights by v, then reshape the result back to (B, T, C).
+        #    Hint: torch.transpose, torch.contiguous, and torch.view may be helpful.
+        ## TODO: implement this (~6 lines)
 
         # output projection
         y = self.resid_dropout(self.c_proj(y))
         return y
-
 
 
 class MLP(nn.Module):

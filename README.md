@@ -21,6 +21,10 @@ cd folder/to/put/assignment
 git clone https://github.com/cs124/pa6a-transformers.git
 ```
 
+## Using a Text Editor
+
+This is the first assignment in this class that is not run on Jupyter Notebooks, Instead, you will write all your code in separate files outlined below. This means that you may have to use a text editor (i.e., Visual Studio Code). For those of you that might not be familiar with this, please refer to [this guide](https://code.visualstudio.com/docs/getstarted/getting-started) to get started, or come to office hours!
+
 ## Environment Setup
 PA6a requires more packages than the `cs124` base environment you previously created. There are two ways to setup your environment:
 

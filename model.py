@@ -51,7 +51,14 @@ class CausalSelfAttention(nn.Module):
         # calculate query, key, values for all heads in batch and move head forward to be the batch dim
         ## TODO: implement this
 
-        # causal self-attention; Self-attend: (B, nh, T, hs) x (B, nh, hs, T) -> (B, nh, T, T)
+        # Students: Implement the causal (masked) self-attention computation here.
+        # Steps required:
+        # - Compute attention scores as scaled dot products between queries and keys.
+        # - Apply the causal mask so each token can only attend to itself and earlier tokens.
+        # - Softmax the masked scores to obtain attention weights.
+        # - Apply dropout to the attention weights.
+        # - Multiply attention weights by values to construct the output, then reassemble into original shape.
+        # See the starter code and vector shapes above for reference.
         ## TODO: implement this
 
         # output projection

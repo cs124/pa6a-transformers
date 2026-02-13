@@ -83,6 +83,7 @@ def compute_perplexity(logits, y_true):
     #   - `y_true` has shape [1, T].
     #   - Use torch.log_softmax.
     #   - Index with [0, torch.arange(T), y_true[0]].
+    #   = Use .item() to get the scalar value of the perplexity.
 
     # YOUR CODE HERE
     pass

@@ -1,7 +1,6 @@
 import os
 import time
 import math
-import pickle
 from contextlib import nullcontext
 
 import numpy as np
@@ -12,7 +11,7 @@ from torch.distributed import init_process_group, destroy_process_group
 from model import GPTConfig, GPT
 
 # -----------------------------------------------------------------------------
-# default config values for training a miniature character-level shakespeare model
+# default config values for training a miniature shakespeare model
 # I/O
 out_dir = 'out-shakespeare'
 eval_interval = 250 # keep frequent because we'll overfit
@@ -29,7 +28,7 @@ wandb_run_name = 'mini-gpt'
 dataset = 'shakespeare'
 gradient_accumulation_steps = 1
 batch_size = 12
-block_size = 64 # context of up to 64 previous characters
+block_size = 64 # context of up to 64 previous tokens
 # baby GPT model :)
 n_layer = 4
 n_head = 4
@@ -115,25 +114,14 @@ def get_batch(split):
 iter_num = 0
 best_val_loss = 1e9
 
-# attempt to derive vocab_size from the dataset
-meta_path = os.path.join(data_dir, 'meta.pkl')
-meta_vocab_size = None
-if os.path.exists(meta_path):
-    with open(meta_path, 'rb') as f:
-        meta = pickle.load(f)
-    meta_vocab_size = meta['vocab_size']
-    print(f"found vocab_size = {meta_vocab_size} (inside {meta_path})")
-
 # model init
 model_args = dict(n_layer=n_layer, n_head=n_head, n_embd=n_embd, block_size=block_size,
                   bias=bias, vocab_size=None, dropout=dropout) # start with model_args from command line
 if init_from == 'scratch':
     # init a new model from scratch
     print("Initializing a new model from scratch")
-    # determine the vocab size we'll use for from-scratch training
-    if meta_vocab_size is None:
-        print("defaulting to vocab_size of GPT-2 to 50304 (50257 rounded up for efficiency)")
-    model_args['vocab_size'] = meta_vocab_size if meta_vocab_size is not None else 50304
+    # vocab_size of GPT-2: 50257, rounded up to 50304 for efficiency
+    model_args['vocab_size'] = 50304
     gptconf = GPTConfig(**model_args)
     model = GPT(gptconf)
 elif init_from == 'resume':

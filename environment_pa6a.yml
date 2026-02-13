@@ -1,0 +1,14 @@
+name: cs124_pa6a
+channels:
+  - defaults
+dependencies:
+  - pip
+  - pip:
+      - torch
+      - numpy
+      - transformers
+      - datasets
+      - tiktoken
+      - wandb
+      - tqdm
+

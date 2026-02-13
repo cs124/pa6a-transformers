@@ -14,7 +14,7 @@ We have provided scaffolding and hints throughout the assignment to guide you th
 
 ## Cloning the Assignment
 
-Open up the terminal (open PowerShell and type `wsl` if you are on Windows, or `ssh` into Myth/Rice if you are using a remote machine) and execute the following commands:
+Select the folder in which you'd like to clone the assignment, and run the following commands in the command line to clone it.
 
 ```
 cd folder/to/put/assignment

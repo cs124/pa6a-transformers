@@ -12,6 +12,15 @@ before diving in, we recommend the CS224N PyTorch tutorial [here](https://colab.
 
 We have provided scaffolding and hints throughout the assignment to guide you through each step.
 
+## Cloning the Assignment
+
+Open up the terminal (open PowerShell and type `wsl` if you are on Windows, or `ssh` into Myth/Rice if you are using a remote machine) and execute the following commands:
+
+```
+cd folder/to/put/assignment
+git clone https://github.com/cs124/pa6a-transformers.git
+```
+
 ## Environment Setup
 PA6a requires more packages than the `cs124` base environment you previously created. There are two ways to setup your environment:
 

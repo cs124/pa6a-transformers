@@ -113,6 +113,7 @@ Run `bash create_assignment_zip.sh` to zip your submission. The script will crea
 To recap, the submission zip should include the following files:
 
 - `model.py`: your implementation of the Transformer model
+- `perplexity.py`: your implementation of the perplexity calculation
 - `perplexity_results.json`: the perplexity results of your sampled sentences
 - `sampled_sentences.json`: your sampled sentences
 - `ethics_responses.txt`: your responses to the ethics questions

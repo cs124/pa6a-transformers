@@ -75,7 +75,7 @@ python sample.py
 
 You are encouraged to tweak the sampling hyperparameters to understand the effects of different sampling hyperparameters like the temperature. Our model is trained on a tiny corpus, so the sampled sentences may not be very fluent, but you should be able to see some Shakespearean-like writing patterns and some basic grammar. If you only get gibberish, you probably did something wrong either in the training or sampling process.
 
-Use your trained model to sample 5 sentences with maximum 100 tokens each. As part of the submission, save your sampled sentences as a list of strings in a json file called `sampled_sentences.json`. We will judge the quality of your sampled sentences based on whether they are at least somewhat coherent and grammatically correct.
+By default, the `sample.py` script uses your trained model to sample 5 sentences with maximum 100 tokens each and saves them in a json file called `sampled_sentences.json`, which you will submit the Gradescope. We will judge the quality of your sampled sentences based on whether they are at least somewhat coherent and grammatically correct.
 
 ## Part 3: Implement Perplexity Calculation
 
